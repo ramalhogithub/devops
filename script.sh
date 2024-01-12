@@ -2,4 +2,7 @@
 
 apt-get update
 apt-get upgrade -y
-apt-get install vim -y
+
+if ! which vim >/dev/null; then
+    apt-get install vim -y
+fi
