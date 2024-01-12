@@ -1,6 +1,10 @@
 Vagrant.configure("2") do |config|
 
     config.vm.provision "shell",  path: "script.sh"
+    config.vm.provision "ansible_local" do |ansible|
+      ansible.playbook = "playbook.yml"
+      ansible.install_mode = "pip"
+    end  
 
     # Cria o servidor de controle
     config.vm.define "controle" do |controle|
