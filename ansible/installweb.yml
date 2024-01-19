@@ -1,5 +1,5 @@
 ---
-- hosts: intranet
+- hosts: web
   become: true
   vars_files:
     - vars/default.yml

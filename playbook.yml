@@ -5,7 +5,7 @@
     - name: Criação Usuário Suporte
       ansible.builtin.user:
         name: suporte
-        comment: suporte
+        comment: sVAGRAuporte
         uid: 5000
         group: root
 
