@@ -1,22 +1,22 @@
 ---
 - hosts: web
-  become: true
+  become: yes
   vars_files:
-    - vars/default.yml
+    - vars/default.yml #Esta merda não funciona
   tasks:
     - name: 'Instalação de pacotes webserver'
       become: yes
       apt:
         pkg:
-          - php7.0
+          - php7.4
           - php-pear
-          - php7.0-curl
-          - php7.0-gd
-          - php7.0-intl
-          - php7.0-xmlrpc
-          - php7.0-mysql
+          - php7.4-curl
+          - php7.4-gd
+          - php7.4-intl
+          - php7.4-xmlrpc
+          - php7.4-mysql
           - apache2
-          - python-mysqldb
+          - python3-mysqldb
           - wget
           - zip
           - curl
@@ -27,7 +27,7 @@
       file: 
         path: /srv/www
         state: directory
-        owner: "{{ app_user }}"
+        owner: "www-data"
         mode: '0775'
     - name: 'Download e Extração do arquivo da aplicação'
       unarchive: 
@@ -81,7 +81,6 @@
       service: 
         name: apache2
         state: reloaded
-
     - name: Restart Apache
       service:
         name: apache2
